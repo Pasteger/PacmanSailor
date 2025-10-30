@@ -1,0 +1,10 @@
+# ninja log v5
+34	7361	7835495897469828	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	24765ffa3981b544
+8	7615	7835495897829125	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	27deb51212f22bd9
+170	8000	7835495902120000	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	b3b76fe158b1ac00
+54	8158	7835495903662042	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	6fdeae30c3f6aef9
+23	8286	7835495904609499	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	ef828f22688c3390
+61	8577	7835495909758913	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	4d6da43f65bef095
+1	8820	7835495912789564	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	7e950ecfa04f8d69
+15	9479	7835495919579572	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b4e8d32d8f55ced6
+9479	9768	7835495922110525	E:/GamesProjects/PacmanSailor/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/626g3t4u/obj/arm64-v8a/libgame.so	8a2542a01b16a490
