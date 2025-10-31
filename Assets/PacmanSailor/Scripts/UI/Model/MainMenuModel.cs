@@ -2,7 +2,7 @@ using UniRx;
 
 namespace PacmanSailor.Scripts.UI.Model
 {
-    public class MainMenuModel : AbstractModel
+    public class MainMenuModel : BaseModel
     {
         public readonly Subject<Unit> OnStartGame = new();
 

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace PacmanSailor.Scripts.UI.View
 {
-    public class HUDView : AbstractView<HUDViewModel, HUDModel>
+    public class HUDView : BaseView<HUDViewModel, HUDModel>
     {
         [SerializeField] private Button _pauseGameButton;
         [SerializeField] private TMP_Text _scoreText;

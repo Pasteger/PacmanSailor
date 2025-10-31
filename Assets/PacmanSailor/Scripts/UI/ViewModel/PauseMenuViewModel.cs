@@ -2,7 +2,7 @@ using PacmanSailor.Scripts.UI.Model;
 
 namespace PacmanSailor.Scripts.UI.ViewModel
 {
-    public class PauseMenuViewModel : AbstractViewModel<PauseMenuModel>
+    public class PauseMenuViewModel : BaseViewModel<PauseMenuModel>
     {
         public PauseMenuViewModel(PauseMenuModel model) : base(model)
         {

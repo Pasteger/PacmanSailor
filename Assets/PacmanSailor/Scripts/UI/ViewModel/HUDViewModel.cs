@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PacmanSailor.Scripts.UI.ViewModel
 {
-    public class HUDViewModel : AbstractViewModel<HUDModel>
+    public class HUDViewModel : BaseViewModel<HUDModel>
     {
         public readonly ReactiveProperty<int> Score = new();
 

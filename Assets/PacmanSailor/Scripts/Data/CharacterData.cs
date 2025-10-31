@@ -1,4 +1,5 @@
 using System;
+using PacmanSailor.Scripts.Enum;
 using UnityEngine;
 
 namespace PacmanSailor.Scripts.Data

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace PacmanSailor.Scripts.UI.View
 {
-    public class PauseMenuView : AbstractView<PauseMenuViewModel, PauseMenuModel>
+    public class PauseMenuView : BaseView<PauseMenuViewModel, PauseMenuModel>
     {
         [SerializeField] private Button _resumeGameButton;
         [SerializeField] private Button _restartGameButton;

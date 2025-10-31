@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c8e5920ce9a2a42984160fd3a2a3ac, type: 3}
+  m_Name: UI Descriptor
+  m_EditorClassIdentifier: 
+  <MainMenuPrefab>k__BackingField: {fileID: 3018481544092294823, guid: 79846a4b0b7935a48b41dc2afd652a02, type: 3}
+  <PauseMenuPrefab>k__BackingField: {fileID: 1594671750925794933, guid: 7d1f3325061e66744929eb2c85880283, type: 3}
+  <HUDPrefab>k__BackingField: {fileID: 6016216603677857374, guid: 243e56427bf8f72479a1b07a8ec86af2, type: 3}
+  <LoseWindowPrefab>k__BackingField: {fileID: 4938633805367582746, guid: 4ad8590703168bd43bb6e9008bb57dc1, type: 3}
+  <WinWindowPrefab>k__BackingField: {fileID: 3054844812023267872, guid: de86bf9844188c74aaf0da1e0c863a28, type: 3}

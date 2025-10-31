@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace PacmanSailor.Scripts.UI.View
 {
-    public class WinWindowView : AbstractView<WinWindowViewModel, WinWindowModel>
+    public class WinWindowView : BaseView<WinWindowViewModel, WinWindowModel>
     {
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _exitGameButton;

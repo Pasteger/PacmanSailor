@@ -1,7 +1,10 @@
-public enum CharacterType
+namespace PacmanSailor.Scripts.Enum
 {
-    Pacman,
-    Stalker,
-    Patroller,
-    Ambusher
+    public enum CharacterType
+    {
+        Pacman,
+        Stalker,
+        Patroller,
+        Ambusher
+    }
 }

@@ -1,11 +1,11 @@
-using PacmanSailor.Scripts.Character.Control;
+using PacmanSailor.Scripts.Character.Behaviour;
 using PacmanSailor.Scripts.Character.Movement;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace PacmanSailor.Scripts.Character.Characters
 {
-    public class Stalker : AbstractCharacter<MovementService, StalkerControl>
+    public class Stalker : BaseCharacter<MovementService, StalkerBehaviour>
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Transform _navMeshAgentRoot;
@@ -15,15 +15,15 @@ namespace PacmanSailor.Scripts.Character.Characters
         {
             _player = FindAnyObjectByType<Pacman>().transform;
             
-            Control = new StalkerControl(_navMeshAgent, _navMeshAgentRoot, _player);
-            MovementService = new MovementService(Control, GetComponent<Rigidbody>(), CharacterData.Speed);
+            Behaviour = new StalkerBehaviour(_navMeshAgent, _navMeshAgentRoot, _player);
+            MovementService = new MovementService(Behaviour, GetComponent<Rigidbody>(), CharacterData.Speed);
 
             base.Activate();
         }
 
         protected override void FixedUpdate()
         {
-            Control.Update();
+            Behaviour.Update();
             base.FixedUpdate();
         }
     }

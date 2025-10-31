@@ -1,5 +1,5 @@
 using System;
-using PacmanSailor.Scripts.Character.Control;
+using PacmanSailor.Scripts.Character.Behaviour;
 using PacmanSailor.Scripts.Core;
 using UnityEngine;
 
@@ -7,14 +7,14 @@ namespace PacmanSailor.Scripts.Character.Movement
 {
     public class MovementService : IPaused, IDisposable
     {
-        private readonly ICharacterControl _control;
+        private readonly ICharacterBehaviour _control;
         private readonly Rigidbody _rigidbody;
         private readonly float _speed;
 
         private Vector2 _direction = Vector2.up;
         private Vector2 _savedLinearVelocity;
 
-        public MovementService(ICharacterControl control, Rigidbody rigidbody, float speed)
+        public MovementService(ICharacterBehaviour control, Rigidbody rigidbody, float speed)
         {
             _control = control;
             _rigidbody = rigidbody;
@@ -22,8 +22,6 @@ namespace PacmanSailor.Scripts.Character.Movement
 
             _control.OnChangeDirection += OnChangeDirection;
         }
-
-        private void OnChangeDirection(Vector2 direction) => _direction = direction;
 
         public void Move()
         {
@@ -33,33 +31,47 @@ namespace PacmanSailor.Scripts.Character.Movement
             Rotate(moveVelocity);
         }
 
+        public void Pause(bool isPause)
+        {
+            if (isPause)
+            {
+                _savedLinearVelocity = _rigidbody.linearVelocity;
+                _rigidbody.linearVelocity = Vector3.zero;
+            }
+            else
+            {
+                _rigidbody.linearVelocity = _savedLinearVelocity;
+            }
+        }
+
+        public void Dispose() => _control.OnChangeDirection -= OnChangeDirection;
+
+        private void OnChangeDirection(Vector2 direction) => _direction = direction;
+
         private void Rotate(Vector2 movement)
         {
             if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
             {
-                _rigidbody.transform.rotation = movement.x switch
+                if (movement.x > 0)
                 {
-                    > 0 => Quaternion.Euler(0, 90, 0),
-                    < 0 => Quaternion.Euler(0, -90, 0)
-                };
+                    _rigidbody.transform.rotation = Quaternion.Euler(0, 90, 0);
+                }
+                else if (movement.x < 0)
+                {
+                    _rigidbody.transform.rotation = Quaternion.Euler(0, -90, 0);
+                }
             }
             else if (Mathf.Abs(movement.y) > Mathf.Abs(movement.x))
             {
-                _rigidbody.transform.rotation = movement.y switch
+                if (movement.y > 0)
                 {
-                    > 0 => Quaternion.Euler(0, 0, 0),
-                    < 0 => Quaternion.Euler(0, 180, 0)
-                };
+                    _rigidbody.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (movement.y < 0)
+                {
+                    _rigidbody.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
             }
         }
-        
-        public void Pause()
-        {
-            _savedLinearVelocity = _rigidbody.linearVelocity;
-            _rigidbody.linearVelocity = Vector3.zero;
-        }
-
-        public void Resume() => _rigidbody.linearVelocity = _savedLinearVelocity;
-        public void Dispose() => _control.OnChangeDirection -= OnChangeDirection;
     }
 }

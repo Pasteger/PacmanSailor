@@ -1,10 +1,10 @@
-using PacmanSailor.Scripts.Items.Management;
+using PacmanSailor.Scripts.Items.Service;
 using UniRx;
 using UnityEngine;
 
 namespace PacmanSailor.Scripts.UI.Model
 {
-    public class HUDModel : AbstractModel
+    public class HUDModel : BaseModel
     {
         public readonly Subject<Unit> OnPauseGame = new();
         public readonly ReactiveProperty<int> Score = new();
@@ -13,7 +13,7 @@ namespace PacmanSailor.Scripts.UI.Model
 
         public HUDModel()
         {
-            PelletsManager.OnPelletCollect
+            PelletsService.OnPelletCollect
                 .Subscribe(_ => Score.Value++)
                 .AddTo(Disposable);
         }

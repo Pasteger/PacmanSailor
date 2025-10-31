@@ -1,13 +1,13 @@
 using System.Linq;
-using PacmanSailor.Scripts.Character.Control;
-using PacmanSailor.Scripts.Character.Control.Parts;
+using PacmanSailor.Scripts.Character.Behaviour;
+using PacmanSailor.Scripts.Character.Behaviour.Parts;
 using PacmanSailor.Scripts.Character.Movement;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace PacmanSailor.Scripts.Character.Characters
 {
-    public class Patroller : AbstractCharacter<MovementService, PatrollerControl>
+    public class Patroller : BaseCharacter<MovementService, PatrollerBehaviour>
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Transform _navMeshAgentRoot;
@@ -22,15 +22,15 @@ namespace PacmanSailor.Scripts.Character.Characters
                 .Select(point => point.transform.position)
                 .ToArray();
 
-            Control = new PatrollerControl(keyPoints, _navMeshAgent, _navMeshAgentRoot, transform, playerTransform,
+            Behaviour = new PatrollerBehaviour(keyPoints, _navMeshAgent, _navMeshAgentRoot, transform, playerTransform,
                 _timeEyelessStalkingLimit);
-            MovementService = new MovementService(Control, characterRigidbody, CharacterData.Speed);
+            MovementService = new MovementService(Behaviour, characterRigidbody, CharacterData.Speed);
             base.Activate();
         }
 
         protected override void FixedUpdate()
         {
-            Control.Update();
+            Behaviour.Update();
             base.FixedUpdate();
         }
     }

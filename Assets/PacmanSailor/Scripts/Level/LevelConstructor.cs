@@ -1,11 +1,11 @@
-using PacmanSailor.Scripts.Config;
+using PacmanSailor.Scripts.Descriptors;
 using UnityEngine;
 
 namespace PacmanSailor.Scripts.Level
 {
     public class LevelConstructor : MonoBehaviour
     {
-        [SerializeField] private LevelsConfig _levelsConfig;
+        [SerializeField] private LevelsDescriptor _levelsConfig;
 
         private GameObject _currentLevel;
 

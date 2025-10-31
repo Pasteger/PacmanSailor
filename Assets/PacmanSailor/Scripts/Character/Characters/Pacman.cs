@@ -1,18 +1,18 @@
-using PacmanSailor.Scripts.Character.Control;
+using PacmanSailor.Scripts.Character.Behaviour;
 using PacmanSailor.Scripts.Character.Movement;
 using UniRx;
 using UnityEngine;
 
 namespace PacmanSailor.Scripts.Character.Characters
 {
-    public class Pacman : AbstractCharacter<MovementService, PlayerInput>
+    public class Pacman : BaseCharacter<MovementService, PlayerInput>
     {
         public static readonly Subject<Unit> OnHit = new();
 
         public override void Activate()
         {
-            Control = new PlayerInput(transform);
-            MovementService = new MovementService(Control, GetComponent<Rigidbody>(), CharacterData.Speed);
+            Behaviour = new PlayerInput(transform);
+            MovementService = new MovementService(Behaviour, GetComponent<Rigidbody>(), CharacterData.Speed);
             base.Activate();
         }
 

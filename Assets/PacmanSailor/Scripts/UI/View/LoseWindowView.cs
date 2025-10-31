@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace PacmanSailor.Scripts.UI.View
 {
-    public class LoseWindowView : AbstractView<LoseWindowViewModel, LoseWindowModel>
+    public class LoseWindowView : BaseView<LoseWindowViewModel, LoseWindowModel>
     {
         [SerializeField] private Button _restartGameButton;
         [SerializeField] private Button _exitGameButton;

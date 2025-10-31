@@ -1,22 +1,22 @@
 using PacmanSailor.Scripts.Character;
-using PacmanSailor.Scripts.Character.Management;
+using PacmanSailor.Scripts.Character.Service;
 using PacmanSailor.Scripts.Level;
-using PacmanSailor.Scripts.UI.Management;
+using PacmanSailor.Scripts.UI.Service;
 using UniRx;
 
 namespace PacmanSailor.Scripts.GameCycle
 {
-    public class GameStarter : AbstractGameCycle
+    public class GameStarter : BaseGameCycle
     {
         private readonly LevelConstructor _levelConstructor;
-        private readonly CharactersManager _charactersManager;
+        private readonly CharactersService _charactersService;
         private readonly UIInstaller _uiInstaller;
 
-        public GameStarter(LevelConstructor levelConstructor, CharactersManager charactersManager,
+        public GameStarter(LevelConstructor levelConstructor, CharactersService charactersService,
             UIInstaller uiInstaller)
         {
             _levelConstructor = levelConstructor;
-            _charactersManager = charactersManager;
+            _charactersService = charactersService;
             _uiInstaller = uiInstaller;
         }
 
@@ -44,8 +44,8 @@ namespace PacmanSailor.Scripts.GameCycle
             _uiInstaller.MainMenuModel.Close();
 
             _levelConstructor.Construct();
-            _charactersManager.SpawnCharacters();
-            _charactersManager.ActivateCharacters();
+            _charactersService.SpawnCharacters();
+            _charactersService.ActivateCharacters();
 
             _uiInstaller.HUDModel.Score.Value = 0;
             _uiInstaller.HUDModel.Open();
@@ -53,7 +53,7 @@ namespace PacmanSailor.Scripts.GameCycle
 
         private void RestartGame()
         {
-            _charactersManager.DestroyCharacters();
+            _charactersService.DestroyCharacters();
             _levelConstructor.DestroyLevel();
 
             _uiInstaller.PauseMenuModel.Close();

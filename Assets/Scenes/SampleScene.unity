@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelConstructorPrefab: {fileID: 421962443778989959, guid: 2ef6b86d10981af4a867237da9dc7986, type: 3}
-  _characterManagerPrefab: {fileID: 124275870278885762, guid: bec7396b31eace64d9685c25c2a84e9a, type: 3}
+  _characterServicePrefab: {fileID: 124275870278885762, guid: bec7396b31eace64d9685c25c2a84e9a, type: 3}
   _uiInstallerPrefab: {fileID: 7578876366859629405, guid: 1688655d4d20bcb429b97be26f7ab7e9, type: 3}
   _canvas: {fileID: 326368690}
 --- !u!4 &1902325948

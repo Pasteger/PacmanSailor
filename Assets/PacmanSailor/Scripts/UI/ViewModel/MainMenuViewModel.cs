@@ -2,7 +2,7 @@ using PacmanSailor.Scripts.UI.Model;
 
 namespace PacmanSailor.Scripts.UI.ViewModel
 {
-    public class MainMenuViewModel : AbstractViewModel<MainMenuModel>
+    public class MainMenuViewModel : BaseViewModel<MainMenuModel>
     {
         public MainMenuViewModel(MainMenuModel model) : base(model)
         {

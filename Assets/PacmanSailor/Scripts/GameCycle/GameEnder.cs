@@ -1,22 +1,21 @@
-using PacmanSailor.Scripts.Character;
 using PacmanSailor.Scripts.Character.Characters;
-using PacmanSailor.Scripts.Character.Management;
-using PacmanSailor.Scripts.Items.Management;
-using PacmanSailor.Scripts.UI.Management;
+using PacmanSailor.Scripts.Character.Service;
+using PacmanSailor.Scripts.Items.Service;
+using PacmanSailor.Scripts.UI.Service;
 using UniRx;
 using UnityEngine;
 
 namespace PacmanSailor.Scripts.GameCycle
 {
-    public class GameEnder : AbstractGameCycle
+    public class GameEnder : BaseGameCycle
     {
         private readonly UIInstaller _uiInstaller;
-        private readonly CharactersManager _charactersManager;
+        private readonly CharactersService _charactersService;
 
-        public GameEnder(UIInstaller uiInstaller, CharactersManager charactersManager)
+        public GameEnder(UIInstaller uiInstaller, CharactersService charactersService)
         {
             _uiInstaller = uiInstaller;
-            _charactersManager = charactersManager;
+            _charactersService = charactersService;
         }
 
         public override void Initialize()
@@ -37,7 +36,7 @@ namespace PacmanSailor.Scripts.GameCycle
                 .Subscribe(_ => GameLose())
                 .AddTo(Disposable);
 
-            PelletsManager.OnAllPelletsCollect
+            PelletsService.OnAllPelletsCollect
                 .Subscribe(_ => GameWin())
                 .AddTo(Disposable);
         }
@@ -46,7 +45,7 @@ namespace PacmanSailor.Scripts.GameCycle
         {
             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel", 0) + 1);
 
-            _charactersManager.Pause();
+            _charactersService.Pause(true);
 
             _uiInstaller.HUDModel.Close();
             _uiInstaller.WinWindowModel.Open();
@@ -54,7 +53,7 @@ namespace PacmanSailor.Scripts.GameCycle
 
         private void GameLose()
         {
-            _charactersManager.Pause();
+            _charactersService.Pause(true);
 
             _uiInstaller.HUDModel.Close();
             _uiInstaller.LoseWindowModel.Open();

@@ -2,7 +2,7 @@ using UniRx;
 
 namespace PacmanSailor.Scripts.UI.Model
 {
-    public class PauseMenuModel : AbstractModel
+    public class PauseMenuModel : BaseModel
     {
         public readonly Subject<Unit> OnResumeGame = new();
         public readonly Subject<Unit> OnRestartGame = new();

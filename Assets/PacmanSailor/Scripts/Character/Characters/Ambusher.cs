@@ -1,14 +1,14 @@
 using System.Linq;
-using PacmanSailor.Scripts.Character.Control;
-using PacmanSailor.Scripts.Character.Control.Modules;
-using PacmanSailor.Scripts.Character.Control.Parts;
+using PacmanSailor.Scripts.Character.Behaviour;
+using PacmanSailor.Scripts.Character.Behaviour.Modules;
+using PacmanSailor.Scripts.Character.Behaviour.Parts;
 using PacmanSailor.Scripts.Character.Movement;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace PacmanSailor.Scripts.Character.Characters
 {
-    public class Ambusher : AbstractCharacter<MovementService, AmbusherControl>
+    public class Ambusher : BaseCharacter<MovementService, AmbusherBehaviour>
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Transform _navMeshAgentRoot;
@@ -23,15 +23,15 @@ namespace PacmanSailor.Scripts.Character.Characters
                 .Select(point => point.transform.position)
                 .ToArray();
 
-            Control = new AmbusherControl(ambushPoints, _navMeshAgent, _navMeshAgentRoot, _playerTrigger,
+            Behaviour = new AmbusherBehaviour(ambushPoints, _navMeshAgent, _navMeshAgentRoot, _playerTrigger,
                 playerTransform, _timeEyelessStalkingLimit);
-            MovementService = new MovementService(Control, characterRigidbody, CharacterData.Speed);
+            MovementService = new MovementService(Behaviour, characterRigidbody, CharacterData.Speed);
             base.Activate();
         }
 
         protected override void FixedUpdate()
         {
-            Control.Update();
+            Behaviour.Update();
             base.FixedUpdate();
         }
     }

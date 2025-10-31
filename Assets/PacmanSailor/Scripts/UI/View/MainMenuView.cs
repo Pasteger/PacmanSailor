@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace PacmanSailor.Scripts.UI.View
 {
-    public class MainMenuView : AbstractView<MainMenuViewModel, MainMenuModel>
+    public class MainMenuView : BaseView<MainMenuViewModel, MainMenuModel>
     {
         [SerializeField] private Button _startGameButton;
 
